@@ -1,54 +1,45 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [friends, setFriends] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  //demo instruction history with initial timeline data
   const [timeline, setTimeline] = useState([
-    { id: 1, friendId: 1, friendName: "Sarah Ahmed", type: "Call", date: "2026-05-17", title: "Call with Sarah Ahmed" },
-    { id: 2, friendId: 2, friendName: "Tanvir Rahman", type: "Text", date: "2026-05-16", title: "Text with Tanvir Rahman" },
-    { id: 3, friendId: 3, friendName: "Arif Islam", type: "Video", date: "2026-05-10", title: "Video with Arif Islam" },
+    { id: 1, date: '2026-05-15', type: 'Call', title: 'Call with Nafis Fuad', friendId: 1 },
+    { id: 2, date: '2026-05-14', type: 'Text', title: 'Text with Anika Rahman', friendId: 2 },
+    { id: 3, date: '2026-05-17', type: 'Video', title: 'Video with Tanvir Hasan', friendId: 3 },
   ]);
-
-  const [toast, setToast] = useState(null);
-
-  const showToast = (message) => {
-    setToast(message);
-    setTimeout(() => setToast(null), 3000);
-  };
 
   useEffect(() => {
     fetch('/friends.json')
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setFriends(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error fetching data: ", err);
         setLoading(false);
       });
   }, []);
 
-  const addTimelineEntry = (friendId, friendName, type) => {
+  const addTimelineEntry = (friendName, friendId, type) => {
     const today = new Date().toISOString().split('T')[0];
     const newEntry = {
       id: Date.now(),
-      friendId,
-      friendName,
-      type,
       date: today,
-      title: `${type} with ${friendName}`
+      type: type,
+      title: `${type} with ${friendName}`,
+      friendId: friendId
     };
     setTimeline([newEntry, ...timeline]);
-    showToast(`✅ Successfully logged ${type} interaction with ${friendName}!`);
+    toast.success(`${type} interaction logged successfully!`);
   };
 
   return (
-    <AppContext.Provider value={{ friends, loading, timeline, addTimelineEntry, toast }}>
+    <AppContext.Provider value={{ friends, loading, timeline, addTimelineEntry }}>
       {children}
     </AppContext.Provider>
   );
