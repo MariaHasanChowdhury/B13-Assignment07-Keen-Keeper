@@ -20,3 +20,7 @@
 * **Styling Engine:** Tailwind CSS (Fluid Grid Matrix and Native Responsiveness)
 * **Charts Engine:** Recharts API (High Fidelity Distribution Data Visualization)
 * **Icons & Alerts:** Lucide React Icons & React Hot Toast Alerts
+---------
+
+- 🔗 Repository: https://github.com/MariaHasanChowdhury/B13-Assignment07-Keen-Keeper
+- 🔗 Live Demo: https://keenkeeper-007-maria.netlify.app/
