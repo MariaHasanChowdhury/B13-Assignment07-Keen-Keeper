@@ -1,16 +1,22 @@
-# React + Vite
+# 👥 KeenKeeper — Keep Your Friendships Alive
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**KeenKeeper** is a beautiful, responsive, and data-driven web application designed to help people retain, nurture, and log meaningful real-life friendships. In a fast-paced world, KeenKeeper helps ensure you stay in touch with your close circles on time.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Key Features
 
-## React Compiler
+* **Friend Overdue Tracking Dashboard:** Interactive homepage highlighting which friends are overdue, almost due, or perfectly on track using visual context-aware dynamic badges.
+* **Granular Interaction Logger:** Log Calls, Texts, and Video checks directly from the friend profiles that automatically dispatch real-time global state entries.
+* **Interaction Analytics & Filterable History:** Beautiful analytical data visibility using `Recharts` and a tailored real-time filtering node on the interaction timeline history.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend Library:** React.js (Functional Architecture & Hooks)
+* **Routing System:** React Router DOM (Single Page Client-Side Navigation)
+* **State Control:** React Context API (Global Event Log System)
+* **Styling Engine:** Tailwind CSS (Fluid Grid Matrix and Native Responsiveness)
+* **Charts Engine:** Recharts API (High Fidelity Distribution Data Visualization)
+* **Icons & Alerts:** Lucide React Icons & React Hot Toast Alerts
