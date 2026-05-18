@@ -1,74 +1,151 @@
 [
   {
     "id": 1,
-    "name": "Sarah Ahmed",
-    "picture": "/public/images/sarah.jpg",
-    "email": "sarah.ahmed@example.com",
-    "days_since_contact": 3,
-    "status": "on-track",
-    "tags": ["College", "Best Friend"],
-    "bio": "Met in University. We both love hiking, coffee testing, and late-night tech talks.",
-    "goal": 7,
-    "next_due_date": "2026-05-22"
+    "name": "Arif Rahman",
+    "picture": "https://randomuser.me/api/portraits/men/32.jpg",
+    "email": "arif.rahman@gmail.com",
+    "days_since_contact": 18,
+    "status": "Overdue",
+    "tags": [
+      "UNIVERSITY",
+      "CLOSE FRIEND"
+    ],
+    "bio": "We studied CSE together at university. Always discussed programming and startups.",
+    "goal": 14,
+    "next_due_date": "2025-07-10"
   },
   {
     "id": 2,
-    "name": "Tanvir Rahman",
-    "picture": "/public/images/tanvir.jpg",
-    "email": "tanvir.r@example.com",
-    "days_since_contact": 12,
-    "status": "almost-due",
-    "tags": ["School", "Football"],
-    "bio": "Childhood friend. Plays football together every weekend. Amazing guitarist.",
-    "goal": 14,
-    "next_due_date": "2026-05-20"
+    "name": "Nusrat Jahan",
+    "picture": "https://randomuser.me/api/portraits/women/44.jpg",
+    "email": "nusrat.jahan@gmail.com",
+    "days_since_contact": 6,
+    "status": "On-Track",
+    "tags": [
+      "SCHOOL",
+      "BEST FRIEND"
+    ],
+    "bio": "Friend since school days. We still share everything from studies to life goals.",
+    "goal": 10,
+    "next_due_date": "2025-07-24"
   },
   {
     "id": 3,
-    "name": "Arif Islam",
-    "picture": "/public/images/arif.jpg",
-    "email": "arif.islam@example.com",
-    "days_since_contact": 25,
-    "status": "overdue",
-    "tags": ["Work", "Tech"],
-    "bio": "Former colleague and mentor. Always guides me on career growth and software architecture.",
-    "goal": 15,
-    "next_due_date": "2026-05-08"
+    "name": "Tanvir Hasan",
+    "picture": "https://randomuser.me/api/portraits/men/51.jpg",
+    "email": "tanvir.hasan@gmail.com",
+    "days_since_contact": 13,
+    "status": "Almost Due",
+    "tags": [
+      "GYM",
+      "FITNESS"
+    ],
+    "bio": "Met at the gym in Mirpur. Helps me stay consistent with workouts.",
+    "goal": 14,
+    "next_due_date": "2025-07-21"
   },
   {
     "id": 4,
-    "name": "Nabila Zaman",
-    "picture": "/public/images/nabila.jpg",
-    "email": "nabila.z@example.com",
-    "days_since_contact": 1,
-    "status": "on-track",
-    "tags": ["Travel", "Neighbor"],
-    "bio": "Travel partner. We explored the mountains together last year. Loves photography.",
-    "goal": 10,
-    "next_due_date": "2026-05-27"
+    "name": "Sadia Islam",
+    "picture": "https://randomuser.me/api/portraits/women/65.jpg",
+    "email": "sadia.islam@gmail.com",
+    "days_since_contact": 20,
+    "status": "Overdue",
+    "tags": [
+      "COLLEAGUE",
+      "DESIGN"
+    ],
+    "bio": "Worked together on UI/UX projects. Very creative and detail-oriented.",
+    "goal": 15,
+    "next_due_date": "2025-07-08"
   },
   {
     "id": 5,
-    "name": "Sajid Hasan",
-    "picture": "/public/images/sajid.jpg",
-    "email": "sajid.h@example.com",
-    "days_since_contact": 18,
-    "status": "overdue",
-    "tags": ["Gym", "University"],
-    "bio": "Gym partner and workout enthusiast. Helping me stay consistent with fitness goals.",
-    "goal": 7,
-    "next_due_date": "2026-05-07"
+    "name": "Mahin Chowdhury",
+    "picture": "https://randomuser.me/api/portraits/men/76.jpg",
+    "email": "mahin.chy@gmail.com",
+    "days_since_contact": 9,
+    "status": "On-Track",
+    "tags": [
+      "STARTUP",
+      "BUSINESS"
+    ],
+    "bio": "We share ideas about startups and online businesses regularly.",
+    "goal": 12,
+    "next_due_date": "2025-07-23"
   },
   {
     "id": 6,
-    "name": "Anika Kabir",
-    "picture": "/public/images/anika.jpg",
-    "email": "anika.k@example.com",
-    "days_since_contact": 6,
-    "status": "almost-due",
-    "tags": ["Family", "Cousin"],
-    "bio": "Favorite cousin. Bookworm and movie critic. We share book recommendations constantly.",
-    "goal": 7,
-    "next_due_date": "2026-05-19"
+    "name": "Farzana Akter",
+    "picture": "https://randomuser.me/api/portraits/women/23.jpg",
+    "email": "farzana.akter@gmail.com",
+    "days_since_contact": 15,
+    "status": "Almost Due",
+    "tags": [
+      "FAMILY FRIEND"
+    ],
+    "bio": "Family friend since childhood. Always checks in during festivals.",
+    "goal": 15,
+    "next_due_date": "2025-07-19"
+  },
+  {
+    "id": 7,
+    "name": "Rakib Hossain",
+    "picture": "https://randomuser.me/api/portraits/men/12.jpg",
+    "email": "rakib.hossain@gmail.com",
+    "days_since_contact": 22,
+    "status": "Overdue",
+    "tags": [
+      "FOOTBALL",
+      "NEIGHBORHOOD"
+    ],
+    "bio": "We used to play football every weekend in our neighborhood field.",
+    "goal": 14,
+    "next_due_date": "2025-07-06"
+  },
+  {
+    "id": 8,
+    "name": "Jannatul Ferdous",
+    "picture": "https://randomuser.me/api/portraits/women/18.jpg",
+    "email": "jannatul.ferdous@gmail.com",
+    "days_since_contact": 7,
+    "status": "On-Track",
+    "tags": [
+      "UNIVERSITY",
+      "STUDY PARTNER"
+    ],
+    "bio": "Study partner for exams. We help each other stay focused.",
+    "goal": 10,
+    "next_due_date": "2025-07-25"
+  },
+  {
+    "id": 9,
+    "name": "Imran Kabir",
+    "picture": "https://randomuser.me/api/portraits/men/90.jpg",
+    "email": "imran.kabir@gmail.com",
+    "days_since_contact": 14,
+    "status": "Almost Due",
+    "tags": [
+      "FREELANCING",
+      "TECH"
+    ],
+    "bio": "Met through freelancing platforms. We often discuss client work and tech trends.",
+    "goal": 14,
+    "next_due_date": "2025-07-20"
+  },
+  {
+    "id": 10,
+    "name": "Tasnim Ahmed",
+    "picture": "https://randomuser.me/api/portraits/women/29.jpg",
+    "email": "tasnim.ahmed@gmail.com",
+    "days_since_contact": 3,
+    "status": "On-Track",
+    "tags": [
+      "ONLINE FRIEND",
+      "GAMING"
+    ],
+    "bio": "Met while playing online games. We still play together on weekends.",
+    "goal": 10,
+    "next_due_date": "2025-07-28"
   }
 ]
