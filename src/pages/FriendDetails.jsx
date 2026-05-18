@@ -1,155 +1,140 @@
 import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import { Phone, MessageSquare, Video, Snooze, Archive, Trash2, Calendar, Target, Clock, ArrowLeft, Mail } from 'lucide-react';
+import { Mail, ShieldAlert, Archive, Trash2, Edit2, Phone, MessageSquare, Video, ArrowLeft } from 'lucide-react';
 
-export default function FriendDetails() {
+const FriendDetails = () => {
   const { id } = useParams();
-  const { friends, timeline, addTimelineEntry } = useContext(AppContext);
+  const { friends, addTimelineEntry } = useContext(AppContext);
   
   const friend = friends.find(f => f.id === parseInt(id));
 
   if (!friend) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-2xl font-bold text-gray-900">Friend profile not found!</h2>
-        <Link to="/" className="text-indigo-600 font-medium inline-flex items-center gap-1 mt-4 hover:underline">
-          <ArrowLeft className="w-4 h-4"/> Back to home
-        </Link>
+      <div className="text-center py-16">
+        <h2 className="text-2xl font-bold text-gray-800">Friend not found!</h2>
+        <Link to="/" className="text-indigo-600 hover:underline inline-flex items-center gap-2 mt-4"><ArrowLeft size={16}/> Go Back Home</Link>
       </div>
     );
   }
 
-  const statusStyles = {
-    'on-track': 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    'almost-due': 'bg-amber-50 text-amber-700 border-amber-200',
-    'overdue': 'bg-rose-50 text-rose-700 border-rose-200'
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'overdue': return 'bg-red-100 text-red-800';
+      case 'almost due': return 'bg-amber-100 text-amber-800';
+      case 'on-track': return 'bg-emerald-100 text-emerald-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
   };
 
-  // নির্দিষ্ট ফ্রেন্ডের ফিল্টার্ড ইন্টারঅ্যাকশন হিস্ট্রি 
-  const friendTimeline = timeline.filter(t => t.friendId === friend.id);
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <Link to="/" className="inline-flex items-center gap-1 text-sm font-semibold text-gray-500 hover:text-indigo-600 mb-6 transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to Dashboard
+    <div className="max-w-7xl mx-auto px-4 py-8 space-y-6">
+      <Link to="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-indigo-600 font-medium transition-colors">
+        <ArrowLeft size={18} /> Back to Dashboard
       </Link>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column — Friend Info Card */}
-        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center space-y-5">
-          <img src={friend.picture} alt={friend.name} className="w-32 h-32 rounded-full object-cover ring-4 ring-indigo-50" />
-          
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">{friend.name}</h2>
-            <div className="flex items-center justify-center gap-1.5 text-sm text-gray-500 mt-1">
-              <Mail className="w-4 h-4" /> <span>{friend.email}</span>
+        <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm space-y-6 h-fit">
+          <div className="text-center space-y-3">
+            <img src={friend.picture} alt={friend.name} className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-indigo-50 shadow-inner" />
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">{friend.name}</h2>
+              <span className={`inline-block mt-1 px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusColor(friend.status)}`}>
+                {friend.status}
+              </span>
             </div>
           </div>
 
-          <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${statusStyles[friend.status]}`}>
-            {friend.status.replace('-', ' ')}
-          </span>
-
-          <p className="text-gray-500 text-sm bg-gray-50 p-4 rounded-xl italic">"{friend.bio}"</p>
-
           <div className="flex flex-wrap gap-1.5 justify-center">
             {friend.tags.map((tag, idx) => (
-              <span key={idx} className="bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md text-xs font-medium">#{tag}</span>
+              <span key={idx} className="bg-gray-50 border border-gray-200 text-gray-600 text-xs px-2.5 py-1 rounded-md font-medium">{tag}</span>
             ))}
           </div>
 
-          {/* Action Buttons */}
-          <div className="w-full pt-4 border-t border-gray-100 grid grid-cols-3 gap-2">
-            <button className="flex flex-col items-center justify-center p-2.5 bg-gray-50 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl text-gray-600 transition-colors">
-              <Snooze className="w-5 h-5 mb-1" /> <span className="text-xs font-semibold">Snooze</span>
+          <hr className="border-gray-100" />
+
+          <div className="space-y-4">
+            <div>
+              <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Bio</label>
+              <p className="text-gray-600 text-sm leading-relaxed mt-1">{friend.bio}</p>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <Mail size={16} className="text-gray-400" />
+              <span>{friend.email}</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 pt-2">
+            <button className="flex flex-col items-center gap-1 p-2 border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50 transition-colors text-xs font-medium">
+              <ShieldAlert size={16} /> Snooze
             </button>
-            <button className="flex flex-col items-center justify-center p-2.5 bg-gray-50 hover:bg-amber-50 hover:text-amber-600 rounded-xl text-gray-600 transition-colors">
-              <Archive className="w-5 h-5 mb-1" /> <span className="text-xs font-semibold">Archive</span>
+            <button className="flex flex-col items-center gap-1 p-2 border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50 transition-colors text-xs font-medium">
+              <Archive size={16} /> Archive
             </button>
-            <button className="flex flex-col items-center justify-center p-2.5 bg-gray-50 hover:bg-rose-50 hover:text-rose-600 rounded-xl text-gray-600 transition-colors">
-              <Trash2 className="w-5 h-5 mb-1" /> <span className="text-xs font-semibold">Delete</span>
+            <button className="flex flex-col items-center gap-1 p-2 border border-red-100 text-red-600 hover:bg-red-50 transition-colors text-xs font-medium">
+              <Trash2 size={16} /> Delete
             </button>
           </div>
         </div>
 
-        {/* Right Column — Stats & Interactions */}
+        {/* Right Column — Interaction Dashboard */}
         <div className="lg:col-span-2 space-y-6">
-          {/* ① Stats Cards */}
+          {/* Section 1: Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
-              <div className="p-3 bg-blue-50 text-blue-600 rounded-xl"><Clock className="w-5 h-5"/></div>
-              <div><p className="text-sm font-medium text-gray-400">Last Contact</p><p className="text-lg font-bold text-gray-900">{friend.days_since_contact} Days Ago</p></div>
+            <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm">
+              <span className="text-xs font-semibold text-gray-400 uppercase">Days Since Contact</span>
+              <p className="text-3xl font-extrabold text-indigo-600 mt-2">{friend.days_since_contact} Days</p>
             </div>
-            <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
-              <div className="p-3 bg-purple-50 text-purple-600 rounded-xl"><Target className="w-5 h-5"/></div>
-              <div><p className="text-sm font-medium text-gray-400">Goal Interval</p><p className="text-lg font-bold text-gray-900">Every {friend.goal} Days</p></div>
+            <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm">
+              <span className="text-xs font-semibold text-gray-400 uppercase">Goal Threshold</span>
+              <p className="text-3xl font-extrabold text-gray-800 mt-2">{friend.goal} Days</p>
             </div>
-            <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
-              <div className="p-3 bg-orange-50 text-orange-600 rounded-xl"><Calendar className="w-5 h-5"/></div>
-              <div><p className="text-sm font-medium text-gray-400">Next Due Date</p><p className="text-lg font-bold text-gray-900">{friend.next_due_date}</p></div>
+            <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm">
+              <span className="text-xs font-semibold text-gray-400 uppercase">Next Due Date</span>
+              <p className="text-lg font-bold text-gray-800 mt-3">{friend.next_due_date}</p>
             </div>
           </div>
 
-          {/* ② Relationship Goal Card */}
-          <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex justify-between items-center">
+          {/* Section 2: Relationship Goal Card */}
+          <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm flex justify-between items-center">
             <div>
-              <h4 className="font-bold text-gray-900">Current Contact Frequency</h4>
-              <p className="text-sm text-gray-500 mt-0.5">You target to catch up once every {friend.goal} days.</p>
+              <h3 className="font-bold text-gray-900 text-lg">Relationship Goal</h3>
+              <p className="text-sm text-gray-500 mt-0.5">Keep in touch at least once every {friend.goal} days.</p>
             </div>
-            <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-colors">Edit</button>
+            <button className="inline-flex items-center gap-2 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-xl text-sm font-medium transition-colors">
+              <Edit2 size={14} /> Edit
+            </button>
           </div>
 
-          {/* ③ Quick Check-In Card */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
-            <h4 className="font-bold text-gray-900">Quick Check-In Log</h4>
+          {/* Section 3: Quick Check-In Card */}
+          <div className="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm space-y-4">
+            <h3 className="font-bold text-gray-900 text-lg">Quick Check-In</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <button 
-                onClick={() => addTimelineEntry(friend.id, friend.name, 'Call')}
-                className="flex items-center justify-center gap-2 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold transition-all shadow-md shadow-indigo-100"
+                onClick={() => addTimelineEntry(friend.name, friend.id, 'Call')}
+                className="flex items-center justify-center gap-2 bg-indigo-600 text-white p-3 rounded-xl font-medium hover:bg-indigo-700 transition-colors"
               >
-                <Phone className="w-4 h-4" /> Call
+                <Phone size={18} /> Call
               </button>
               <button 
-                onClick={() => addTimelineEntry(friend.id, friend.name, 'Text')}
-                className="flex items-center justify-center gap-2 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-semibold transition-all shadow-md shadow-sky-100"
+                onClick={() => addTimelineEntry(friend.name, friend.id, 'Text')}
+                className="flex items-center justify-center gap-2 bg-sky-500 text-white p-3 rounded-xl font-medium hover:bg-sky-600 transition-colors"
               >
-                <MessageSquare className="w-4 h-4" /> Text
+                <MessageSquare size={18} /> Text
               </button>
               <button 
-                onClick={() => addTimelineEntry(friend.id, friend.name, 'Video')}
-                className="flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold transition-all shadow-md shadow-emerald-100"
+                onClick={() => addTimelineEntry(friend.name, friend.id, 'Video')}
+                className="flex items-center justify-center gap-2 bg-emerald-600 text-white p-3 rounded-xl font-medium hover:bg-emerald-700 transition-colors"
               >
-                <Video className="w-4 h-4" /> Video Call
+                <Video size={18} /> Video
               </button>
             </div>
-          </div>
-
-          {/* Personal Recent Timeline */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
-            <h4 className="font-bold text-gray-900">Recent History with {friend.name}</h4>
-            {friendTimeline.length === 0 ? (
-              <p className="text-sm text-gray-400 italic">No recent log entry found.</p>
-            ) : (
-              <div className="space-y-3">
-                {friendTimeline.map(log => (
-                  <div key={log.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100">
-                    <div className="flex items-center gap-3">
-                      <span className="p-2 bg-white rounded-lg text-indigo-600 shadow-sm">
-                        {log.type === 'Call' && <Phone className="w-4 h-4"/>}
-                        {log.type === 'Text' && <MessageSquare className="w-4 h-4"/>}
-                        {log.type === 'Video' && <Video className="w-4 h-4"/>}
-                      </span>
-                      <p className="font-medium text-sm text-gray-800">{log.title}</p>
-                    </div>
-                    <span className="text-xs text-gray-400 font-medium">{log.date}</span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default FriendDetails;
