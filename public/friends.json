@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Ahmed",
+    "picture": "/public/images/sarah.jpg",
+    "email": "sarah.ahmed@example.com",
+    "days_since_contact": 3,
+    "status": "on-track",
+    "tags": ["College", "Best Friend"],
+    "bio": "Met in University. We both love hiking, coffee testing, and late-night tech talks.",
+    "goal": 7,
+    "next_due_date": "2026-05-22"
+  },
+  {
+    "id": 2,
+    "name": "Tanvir Rahman",
+    "picture": "/public/images/tanvir.jpg",
+    "email": "tanvir.r@example.com",
+    "days_since_contact": 12,
+    "status": "almost-due",
+    "tags": ["School", "Football"],
+    "bio": "Childhood friend. Plays football together every weekend. Amazing guitarist.",
+    "goal": 14,
+    "next_due_date": "2026-05-20"
+  },
+  {
+    "id": 3,
+    "name": "Arif Islam",
+    "picture": "/public/images/arif.jpg",
+    "email": "arif.islam@example.com",
+    "days_since_contact": 25,
+    "status": "overdue",
+    "tags": ["Work", "Tech"],
+    "bio": "Former colleague and mentor. Always guides me on career growth and software architecture.",
+    "goal": 15,
+    "next_due_date": "2026-05-08"
+  },
+  {
+    "id": 4,
+    "name": "Nabila Zaman",
+    "picture": "/public/images/nabila.jpg",
+    "email": "nabila.z@example.com",
+    "days_since_contact": 1,
+    "status": "on-track",
+    "tags": ["Travel", "Neighbor"],
+    "bio": "Travel partner. We explored the mountains together last year. Loves photography.",
+    "goal": 10,
+    "next_due_date": "2026-05-27"
+  },
+  {
+    "id": 5,
+    "name": "Sajid Hasan",
+    "picture": "/public/images/sajid.jpg",
+    "email": "sajid.h@example.com",
+    "days_since_contact": 18,
+    "status": "overdue",
+    "tags": ["Gym", "University"],
+    "bio": "Gym partner and workout enthusiast. Helping me stay consistent with fitness goals.",
+    "goal": 7,
+    "next_due_date": "2026-05-07"
+  },
+  {
+    "id": 6,
+    "name": "Anika Kabir",
+    "picture": "/public/images/anika.jpg",
+    "email": "anika.k@example.com",
+    "days_since_contact": 6,
+    "status": "almost-due",
+    "tags": ["Family", "Cousin"],
+    "bio": "Favorite cousin. Bookworm and movie critic. We share book recommendations constantly.",
+    "goal": 7,
+    "next_due_date": "2026-05-19"
+  }
+]
